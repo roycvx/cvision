@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'applicants/css/applicants.css' %}">
+    <script src="{% static 'applicants/js/direction-selects.js' %}"></script>
+    <title>Datos de Postulante</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Formulario de Postulación</h1>
+    </header>
+
+    <main>
+        <form action="{% url 'enviar-datos' %}" method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <div class="div-datos-personales">
+
+                    <div class="datos-1">
+                        <div class="ancho-campos-1">
+                            <label for="cedula">Cédula:</label>
+                            <input type="text" id="cedula" name="cedula">
+                            <div class="estado-civil-container">
+                                <label>Estado Civil:</label>
+                                <div class="estado-civil">
+                                    <label><input type="radio" name="estado_civil" value="soltero"> Soltero/a</label>
+                                    <label><input type="radio" name="estado_civil" value="casado"> Casado/a</label>
+                                    <label><input type="radio" name="estado_civil" value="union_libre"> Unión
+                                        Libre</label>
+                                    <label><input type="radio" name="estado_civil" value="otro"> Otro</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ancho-campos-2">
+                            <label for="nacimiento">Fecha de Nacimiento:</label>
+                            <input type="date" id="nacimiento" name="nacimiento">
+
+                        </div>
+                    </div>
+
+                    <div class="datos-2">
+                        <div class="ancho-campos-1">
+                            <label for="primer_nombre">Nombres:</label>
+                            <div class="nombres-inputs">
+                                <input type="text" id="primer_nombre" name="primer_nombre" required>
+                                <input type="text" id="segundo_nombre" name="segundo_nombre">
+                            </div>
+                        </div>
+
+                        <div class="ancho-campos-2">
+                            <label for="primer_apellido">Apellidos:</label>
+                            <div class="apellidos-inputs">
+                                <input type="text" id="primer_apellido" name="primer_apellido" required>
+                                <input type="text" id="segundo_apellido" name="segundo_apellido">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="datos-3">
+                        <div class="ancho-campos-1">
+                            <label for="genero">Género:</label>
+                            <select id="genero" name="genero">
+                                <option value="">Seleccione su género</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                            </select>
+                        </div>
+
+                        <div class="ancho-campos-2">
+                            <label for="nacionalidad">Nacionalidad:</label>
+                            <select id="nacionalidad" name="nacionalidad">
+                                <option value="">Seleccione una nacionalidad</option>
+                                <option value="panamena">Panameña</option>
+                                <option value="extranjera">Extranjera</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="datos-4">
+                        <div class="ancho-campos-1">
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+
+                        <div class="ancho-campos-2">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dirección Completa</legend>
+                <div class="div-direccion-completa">
+                    <div class="container">
+                        <label for="provincias">Provincia:</label>
+                        <select name="provincias" id="provincias">
+                            <option value="">Seleccione su provincia</option>
+                        </select>
+                    </div>
+                    <div class="container">
+                        <label for="distritos">Distrito:</label>
+                        <select name="" id="distritos">
+                            <option value="">Seleccione su distrito</option>
+                        </select>
+                    </div>
+                    <div class="container">
+                        <label for="corregimientos">Corregimiento:</label>
+                        <select name="" id="corregimientos">
+                            <option value="">Seleccione su corregimiento</option>
+                        </select>
+
+
+                    </div>
+                    <div class="container">
+                        <label for="calle">Calle:</label>
+                        <input type="text" id="calle" name="calle">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Información Adicional</legend>
+                <div>
+                    <label for="ocupacion">Ocupación Actual:</label>
+                    <select id="ocupacion" name="ocupacion">
+                        <option value="">Seleccione una ocupación</option>
+                        <option value="desempleado">Desempleado</option>
+                        <option value="empleado">Empleado</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos Académicos</legend>
+                <div class="two-columns">
+                    <div>
+                        <label for="categorias">Categorías de Títulos:</label>
+                        <select id="categorias" name="categorias">
+                            <option value="">Selecciona una categoría</option>
+                            <option value="doctorado">Doctorado</option>
+                            <option value="maestria">Maestría</option>
+                            <option value="postgrado">Postgrado</option>
+                            <option value="licenciatura_ingenieria">Licenciatura/Ingeniería</option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="certificado">Certificado Escolar</option>
+                            <option value="diplomado">Diplomado</option>
+                            <option value="seminarios">Seminarios</option>
+                            <option value="cursos">Cursos</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="archivos"></div>
+            </fieldset>
+
+            <div>
+                <button type="submit" id="boton">Enviar Datos</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2025 Datos de Postulante</p>
+    </footer>
+
+</body>
+
+</html>

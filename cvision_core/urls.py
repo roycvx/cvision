@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.urls import include # importamos esta función para obtener las urls externas
+
 urlpatterns = [
+    
+    path('', include('auth_app.urls')),
+    path('applicants/', include('applicants.urls')),
+    path('admin-panel', include('admin_panel.urls')),
     path('admin/', admin.site.urls),
 ]
