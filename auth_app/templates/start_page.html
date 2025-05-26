@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            gap: 30px;
+        }
+
+        section {
+            background-color: #ecf0f1;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+            padding: 30px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #fff;
+            transition: border 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 20px 10px;
+            }
+
+            legend {
+                font-size: 1.2rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Bienvenido a la página de inicio</h1>
+    </header>
+
+    <main>
+        <!-- Sección para Administradores -->
+        <section>
+            <fieldset>
+                <legend>Si eres admin ingresa aquí</legend>
+                <form action="{% url 'show-applicant' %}" method="post">
+                    {% csrf_token %}
+                    <label for="email-admin">Email:</label>
+                    <input type="email" id="email-admin" name="email-admin" required>
+
+                    <label for="password-admin">Contraseña:</label>
+                    <input type="password" id="password-admin" name="password-admin" required>
+
+                    <button type="submit">Ingresar como Admin</button>
+                </form>
+            </fieldset>
+        </section>
+
+        <!-- Sección para Clientes -->
+        <section>
+            <fieldset>
+                <legend>Si eres cliente ingresa aquí</legend>
+                <!-- <form action="{% url 'form-applicant' %}" method="post"> -->
+                    <!-- {% csrf_token %} -->
+                    <!-- <button type="submit">Ingresar como Cliente</button> -->
+                     <a href="{% url 'form-applicant' %}"> Cliente </a>
+                <!-- </form> -->
+            </fieldset>
+        </section>
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados - 2025 by Roy Coronado</p>
+    </footer>
+
+</body>
+
+</html>
