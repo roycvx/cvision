@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header,
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .search-container {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 0.6rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .cliente {
+            display: none;
+            margin-bottom: 3rem;
+        }
+
+        .cliente.visible {
+            display: block;
+        }
+
+        .section-title {
+            margin-top: 2rem;
+            background-color: #34495e;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2rem;
+            margin-top: 1rem;
+        }
+
+        .data-item {
+            background-color: #ecf0f1;
+            padding: 0.7rem;
+            border-radius: 4px;
+        }
+
+        .data-item strong {
+            display: block;
+            color: #2c3e50;
+            margin-bottom: 0.2rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Dashboard - Postulantes</h1>
+        <ul>
+            <li><a href="{% url 'start-page' %}" style="color:white;">Página de Inicio</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="busqueda" placeholder="Buscar por nombre o apellido...">
+        </div>
+
+        <!-- Postulante -->
+        <div class="cliente visible" data-nombre="juan perez">
+
+            <h3 class="section-title">Datos Personales</h3>
+            <div class="data-grid">
+                <div class="data-item"><strong>Primer Nombre:</strong> Juan</div>
+                <div class="data-item"><strong>Segundo Nombre:</strong> Manuel</div>
+                <div class="data-item"><strong>Primer Apellido:</strong> Perez</div>
+                <div class="data-item"><strong>Segundo Apellido:</strong> Gomez</div>
+                <div class="data-item"><strong>Cédula:</strong> 12345678</div>
+                <div class="data-item"><strong>Fecha de Nacimiento:</strong> 1990-05-12</div>
+                <div class="data-item"><strong>Género:</strong> Masculino</div>
+                <div class="data-item"><strong>Nacionalidad:</strong> Venezolana</div>
+                <div class="data-item"><strong>Correo Electrónico:</strong> juan@example.com</div>
+                <div class="data-item"><strong>Teléfono:</strong> 0414-1234567</div>
+            </div>
+
+            <h3 class="section-title">Dirección</h3>
+            <div class="data-grid">
+                <div class="data-item"><strong>Calle:</strong> Principal</div>
+                <div class="data-item"><strong>Número:</strong> 12</div>
+                <div class="data-item"><strong>Ciudad:</strong> Caracas</div>
+                <div class="data-item"><strong>Estado:</strong> Distrito Capital</div>
+                <div class="data-item"><strong>País:</strong> Venezuela</div>
+            </div>
+
+            <h3 class="section-title">Información Adicional</h3>
+            <div class="data-grid">
+                <div class="data-item"><strong>Estado Civil:</strong> Soltero</div>
+                <div class="data-item"><strong>Ocupación Actual:</strong> Ingeniero</div>
+            </div>
+
+            <h3 class="section-title">Datos Académicos</h3>
+            <div class="data-grid">
+                <div class="data-item"><strong>Categoría de Título:</strong> Hoja de Vida</div>
+                <div class="data-item"><strong>Licenciatura:</strong> Título.pdf</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h3>© Derechos reservados</h3>
+    </footer>
+
+</body>
+
+</html>
